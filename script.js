@@ -18,10 +18,15 @@ const getPokemons = async () => {
     const displayName = document.createElement("p");
     const pokemonContainer = document.createElement("div");
     const imgPokemon = document.createElement("img");
+    const typeContainer = document.createElement("div");
     const pokemonType = document.createElement("p");
+    const pokemonType2 = document.createElement("p");
     const pokemonNumber = document.createElement("p");
 
     pokemonContainer.className = "pokemon-container";
+    displayName.className = "pokemon-name";
+    pokemonNumber.className = "pokemon-number";
+    typeContainer.className = "type-container";
     displayName.innerText = `${pokemon.name}`;
     pokemonNumber.innerText = `#${pokemon.pokedexId}`;
     imgPokemon.src = `${pokemon.image}`;
@@ -29,14 +34,20 @@ const getPokemons = async () => {
 
     if (pokemon.apiTypes.length === 1) {
       pokemonType.innerText = `${type1.name}`;
+      pokemonType.className = `pokemon-type ${type1.name}`;
     } else {
-      pokemonType.innerText = `${type1.name} ${type2.name}`;
+      pokemonType.className = `pokemon-type ${type1.name}`;
+      pokemonType2.className = `pokemon-type ${type2.name}`;
+      pokemonType.innerText = `${type1.name}`;
+      pokemonType2.innerText = `${type2.name}`;
     }
 
     pokemonContainer.appendChild(imgPokemon);
     pokemonContainer.appendChild(pokemonNumber);
     pokemonContainer.appendChild(displayName);
-    pokemonContainer.appendChild(pokemonType);
+    typeContainer.appendChild(pokemonType);
+    typeContainer.appendChild(pokemonType2);
+    pokemonContainer.appendChild(typeContainer);
     mainContainer.appendChild(pokemonContainer);
   }
 };

@@ -1,3 +1,27 @@
+:root {
+  --clr-black: #1c1c1c;
+  --clr-gray: #ececec;
+  --clr-white: #f7f7f7;
+  --type-normal: #a8a878;
+  --type-fire: #f08030;
+  --type-water: #6890f0;
+  --type-grass: #78c850;
+  --type-electric: #f8d030;
+  --type-ice: #98d8d8;
+  --type-fighting: #c03028;
+  --type-poison: #a040a0;
+  --type-ground: #e0c068;
+  --type-flying: #a890f0;
+  --type-psychic: #f85888;
+  --type-bug: #a8b820;
+  --type-rock: #b8a038;
+  --type-ghost: #705898;
+  --type-dark: #705848;
+  --type-dragon: #7038f8;
+  --type-steel: #b8b8d0;
+  --type-fairy: #f0b6bc;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +30,7 @@
 
 body {
   background-color: #d8d8d8;
+  font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -32,4 +57,119 @@ main {
 
 .pokemon-container > img {
   width: 50%;
+}
+
+.pokemon-name {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.type-container {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemon-type {
+  margin: 10px 10px 10px 10px;
+  padding: 7px 12px 7px 12px;
+  border-radius: 15px;
+}
+
+.pokemon-number {
+  background-color: rgb(196, 195, 195);
+  padding: 3px 10px 3px 10px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.Normal {
+  background-color: var(--type-normal);
+  color: var(--clr-black);
+}
+
+.Combat {
+  background-color: var(--type-fighting);
+  color: var(--clr-white);
+}
+
+.Vol {
+  background-color: var(--type-flying);
+  color: var(--clr-black);
+}
+
+.Poison {
+  background-color: var(--type-poison);
+  color: var(--clr-white);
+}
+
+.Sol {
+  background-color: var(--type-ground);
+  color: var(--clr-black);
+}
+
+.Roche {
+  background-color: var(--type-rock);
+  color: var(--clr-black);
+}
+
+.Insecte {
+  background-color: var(--type-bug);
+  color: var(--clr-black);
+}
+
+.Spectre {
+  background-color: var(--type-ghost);
+  color: var(--clr-white);
+}
+
+.Acier {
+  background-color: var(--type-steel);
+  color: var(--clr-black);
+}
+
+.Feu {
+  background-color: var(--type-fire);
+  color: var(--clr-black);
+}
+
+.Psy {
+  background-color: var(--type-psychic);
+  color: var(--clr-black);
+}
+
+.Eau {
+  background-color: var(--type-water);
+  color: var(--clr-white);
+}
+
+.Plante {
+  background-color: var(--type-grass);
+  color: var(--clr-black);
+}
+
+.Électrik {
+  background-color: var(--type-electric);
+  color: var(--clr-black);
+}
+
+.Glace {
+  background-color: var(--type-ice);
+  color: var(--clr-black);
+}
+
+.Dragon {
+  background-color: var(--type-dragon);
+  color: var(--clr-black);
+}
+
+.T\u00e9n\u00e8bres {
+  background-color: var(--type-dark);
+  color: var(--clr-black);
+}
+
+.Fée {
+  background-color: var(--type-fairy);
+  color: var(--clr-black);
 }
