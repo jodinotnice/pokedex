@@ -1,20 +1,30 @@
+let allPokemons = [];
+
+async function displayPokemonTypes() {
+  const response = await fetch("https://pokebuildapi.fr/api/v1/types");
+
+  const types = await response.json();
+  return types;
+}
+
 async function displayPokemonsGen1() {
   const response = await fetch(
     "https://pokebuildapi.fr/api/v1/pokemon/generation/1"
   );
   const pokemons = await response.json();
-  return pokemons;
+  allPokemons = pokemons;
+  getPokemons(pokemons);
 }
 
-displayPokemonsGen1();
-
 const mainContainer = document.querySelector(".container-pokedex");
+const filterContainer = document.querySelector(".nav-filter");
 
-const getPokemons = async () => {
-  let pokemonData = await displayPokemonsGen1();
+const pokemonData = displayPokemonsGen1();
 
-  console.log(pokemonData);
-  for (pokemon of pokemonData) {
+const getPokemons = (arr) => {
+  mainContainer.innerHTML = "";
+
+  for (pokemon of arr) {
     const displayName = document.createElement("p");
     const pokemonContainer = document.createElement("div");
     const imgPokemon = document.createElement("img");
@@ -52,4 +62,44 @@ const getPokemons = async () => {
   }
 };
 
-getPokemons();
+const getTypes = async () => {
+  let pokemonTypes = await displayPokemonTypes();
+  const ulTypes = document.createElement("ul");
+  const buttonAll = document.createElement("button");
+  const liAll = document.createElement("li");
+
+  ulTypes.classList = "ul-flex";
+  buttonAll.innerText = "Tous";
+  buttonAll.classList = "pokemon-type All button-type";
+
+  liAll.appendChild(buttonAll);
+  ulTypes.appendChild(liAll);
+
+  buttonAll.addEventListener("click", () => {
+    getPokemons(allPokemons);
+    console.log("button clicked");
+  });
+
+  for (type of pokemonTypes) {
+    const buttonTypes = document.createElement("button");
+    const liTypes = document.createElement("li");
+
+    buttonTypes.innerText = `${type.name}`;
+    buttonTypes.className = `pokemon-type ${type.name} button-type`;
+
+    liTypes.appendChild(buttonTypes);
+    ulTypes.appendChild(liTypes);
+    filterContainer.appendChild(ulTypes);
+
+    buttonTypes.addEventListener("click", () => {
+      const match = (type) => type.name === buttonTypes.innerText;
+      const filteredPokemon = allPokemons.filter((pokemon) =>
+        pokemon.apiTypes.some(match)
+      );
+
+      getPokemons(filteredPokemon);
+    });
+  }
+};
+
+getTypes();

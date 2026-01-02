@@ -33,9 +33,43 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 20px 20px;
+  margin-bottom: 20px;
+  background-color: #f7f7f7;
+}
+
+nav {
+  max-width: 1040px;
+}
+
+.button-type {
+  box-shadow: 0px 0px 33px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+
+.button-type:hover {
+  font-weight: 600;
+  opacity: 1;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
 main {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 15px 0 15px 0;
+}
+
+.ul-flex {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .container-pokedex {
@@ -56,11 +90,12 @@ main {
 }
 
 .pokemon-container > img {
+  padding: 15px 0 10px 0;
   width: 50%;
 }
 
 .pokemon-name {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 25px;
 }
 
@@ -75,6 +110,8 @@ main {
   margin: 10px 10px 10px 10px;
   padding: 7px 12px 7px 12px;
   border-radius: 15px;
+  font-weight: 500;
+  border-style: none;
 }
 
 .pokemon-number {
@@ -82,6 +119,10 @@ main {
   padding: 3px 10px 3px 10px;
   border-radius: 20px;
   text-align: center;
+}
+
+.All {
+  background-color: rgb(196, 195, 195);
 }
 
 .Normal {
@@ -161,12 +202,12 @@ main {
 
 .Dragon {
   background-color: var(--type-dragon);
-  color: var(--clr-black);
+  color: var(--clr-white);
 }
 
-.T\u00e9n\u00e8bres {
+.Ténèbres {
   background-color: var(--type-dark);
-  color: var(--clr-black);
+  color: var(--clr-white);
 }
 
 .Fée {
