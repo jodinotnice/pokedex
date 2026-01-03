@@ -108,11 +108,17 @@ const getTypes = async () => {
 searchpokemon.addEventListener("input", (e) => {
   const searchText = e.target.value.toLowerCase();
 
-  const filteredSearch = allPokemons.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchText)
-  );
+  if (searchText.length >= 3) {
+    const filteredSearch = allPokemons.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchText)
+    );
 
-  getPokemons(filteredSearch);
+    getPokemons(filteredSearch);
+  }
+
+  if (!searchText.length) {
+    getPokemons(allPokemons);
+  }
 });
 
 getTypes();
