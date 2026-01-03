@@ -11,11 +11,25 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="shortcut icon"
+      href="images/pokedexlogo.ico"
+      type="image/x-icon"
+    />
     <title>Pokedex V1</title>
   </head>
   <body>
     <header>
-      <nav class="nav-filter"></nav>
+      <img src="images/pokedexlogo.png" alt="Pokedex logo" />
+
+      <section>
+        <div class="flex-search">
+          <label for="search-pokemon">Search your Pokemon</label>
+          <input type="search" name="" id="search-pokemon" />
+        </div>
+
+        <nav class="nav-filter"></nav>
+      </section>
     </header>
 
     <main class="container-pokedex"></main>

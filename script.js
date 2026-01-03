@@ -18,6 +18,8 @@ async function displayPokemonsGen1() {
 
 const mainContainer = document.querySelector(".container-pokedex");
 const filterContainer = document.querySelector(".nav-filter");
+const searchpokemon = document.getElementById("search-pokemon");
+const formPokemon = document.getElementById("form-pokemon");
 
 const pokemonData = displayPokemonsGen1();
 
@@ -34,6 +36,7 @@ const getPokemons = (arr) => {
     const pokemonNumber = document.createElement("p");
 
     pokemonContainer.className = "pokemon-container";
+    pokemonContainer.id = `${pokemon.name}`;
     displayName.className = "pokemon-name";
     pokemonNumber.className = "pokemon-number";
     typeContainer.className = "type-container";
@@ -101,5 +104,15 @@ const getTypes = async () => {
     });
   }
 };
+
+searchpokemon.addEventListener("input", (e) => {
+  const searchText = e.target.value.toLowerCase();
+
+  const filteredSearch = allPokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchText)
+  );
+
+  getPokemons(filteredSearch);
+});
 
 getTypes();
