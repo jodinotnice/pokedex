@@ -34,6 +34,8 @@ body {
 }
 
 header {
+  display: flex;
+  justify-content: center;
   padding: 30px 0 20px 20px;
   margin-bottom: 20px;
   background-color: #f7f7f7;
@@ -50,6 +52,8 @@ nav {
 .flex-search {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 15px;
 }
 

@@ -20,21 +20,23 @@
   </head>
   <body>
     <header>
-      <img src="images/pokedexlogo.png" alt="Pokedex logo" />
+      <div>
+        <img src="images/pokedexlogo.png" alt="Pokedex logo" />
+      </div>
 
-      <section>
-        <div class="flex-search">
-          <label for="search-pokemon">Search your Pokemon</label>
-          <input
-            placeholder="exemple: Herbizarre..."
-            type="search"
-            name=""
-            id="search-pokemon"
-          />
-        </div>
-
-        <nav class="nav-filter"></nav>
-      </section>
+      <nav class="nav-filter">
+        <section>
+          <div class="flex-search">
+            <label for="search-pokemon">Search your Pokemon</label>
+            <input
+              placeholder="exemple: Herbizarre..."
+              type="search"
+              name=""
+              id="search-pokemon"
+            />
+          </div>
+        </section>
+      </nav>
     </header>
 
     <main class="container-pokedex"></main>
