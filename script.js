@@ -17,9 +17,13 @@ async function displayPokemonsGen1() {
 }
 
 const mainContainer = document.querySelector(".container-pokedex");
-const filterContainer = document.querySelector(".nav-filter");
+const filterContainer = document.querySelector(".section-filter");
+const triContainer = document.querySelector(".section-tri");
 const searchpokemon = document.getElementById("search-pokemon");
 const formPokemon = document.getElementById("form-pokemon");
+const azSort = document.querySelector(".AZ-sort");
+const ascSort = document.querySelector(".asc-sort");
+const descAscSort = document.querySelector(".desc-asc-sort");
 
 const pokemonData = displayPokemonsGen1();
 
@@ -122,3 +126,20 @@ searchpokemon.addEventListener("input", (e) => {
 });
 
 getTypes();
+
+function alphabeticSort() {
+  const sortedAZ = [...allPokemons].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+  allPokemons(sortedAZ);
+}
+
+azSort.addEventListener("click", () => alphabeticSort());
+
+function ascDescendingSort() {
+  const descPokemons = allPokemons.reverse();
+  getPokemons(descPokemons);
+}
+
+descAscSort.addEventListener("click", () => ascDescendingSort());
