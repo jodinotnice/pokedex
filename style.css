@@ -206,7 +206,7 @@ main {
   text-align: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 945px) {
   header,
   .pokemon-type {
     font-size: 12px;
@@ -215,7 +215,7 @@ main {
   header {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 30px 10px;
   }
 
   .pokemon-type {
@@ -225,7 +225,9 @@ main {
   }
 
   .container-pokedex {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .pokemon-container {
