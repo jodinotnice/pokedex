@@ -13,6 +13,7 @@ async function displayPokemonsGen1() {
   );
   const pokemons = await response.json();
   allPokemons = pokemons;
+  console.log(allPokemons);
   getPokemons(pokemons);
 }
 
@@ -22,8 +23,10 @@ const triContainer = document.querySelector(".section-tri");
 const searchpokemon = document.getElementById("search-pokemon");
 const formPokemon = document.getElementById("form-pokemon");
 const azSort = document.querySelector(".AZ-sort");
+const zaSort = document.querySelector(".ZA-sort");
 const ascSort = document.querySelector(".asc-sort");
 const descAscSort = document.querySelector(".desc-asc-sort");
+const resetSort = document.querySelector(".reset-sort");
 
 const pokemonData = displayPokemonsGen1();
 
@@ -38,15 +41,38 @@ const getPokemons = (arr) => {
     const pokemonType = document.createElement("p");
     const pokemonType2 = document.createElement("p");
     const pokemonNumber = document.createElement("p");
+    const flipCardInner = document.createElement("div");
+    const flipCardFront = document.createElement("div");
+    const flipCardBack = document.createElement("div");
+    const statsContainer = document.createElement("div");
+    const imgSprite = document.createElement("img");
+
+    const statsHp = document.createElement("p");
+    const statsAtk = document.createElement("p");
+    const statsDef = document.createElement("p");
+    const statsSatk = document.createElement("p");
+    const statsSdef = document.createElement("p");
+    const statsSpeed = document.createElement("p");
 
     pokemonContainer.className = "pokemon-container";
     pokemonContainer.id = `${pokemon.name}`;
     displayName.className = "pokemon-name";
     pokemonNumber.className = "pokemon-number";
     typeContainer.className = "type-container";
+    flipCardInner.className = "flip-card-inner";
+    flipCardFront.className = "flip-card-front";
+    flipCardBack.className = "flip-card-back";
     displayName.innerText = `${pokemon.name}`;
     pokemonNumber.innerText = `#${pokemon.pokedexId}`;
     imgPokemon.src = `${pokemon.image}`;
+    statsHp.innerText = `HP: ${pokemon.stats.HP}`;
+    statsAtk.innerText = `ATK: ${pokemon.stats.attack}`;
+    statsDef.innerText = `DEF: ${pokemon.stats.defense}`;
+    statsSatk.innerText = `SPDEF: ${pokemon.stats.special_attack}`;
+    statsSdef.innerText = `SPATK: ${pokemon.stats.special_defense}`;
+    statsSpeed.innerText = `SPD: ${pokemon.stats.speed}`;
+    imgSprite.src = `${pokemon.sprite}`;
+
     const [type1, type2] = pokemon.apiTypes;
 
     if (pokemon.apiTypes.length === 1) {
@@ -59,12 +85,24 @@ const getPokemons = (arr) => {
       pokemonType2.innerText = `${type2.name}`;
     }
 
-    pokemonContainer.appendChild(imgPokemon);
-    pokemonContainer.appendChild(pokemonNumber);
-    pokemonContainer.appendChild(displayName);
+    statsContainer.appendChild(statsHp);
+    statsContainer.appendChild(statsAtk);
+    statsContainer.appendChild(statsDef);
+    statsContainer.appendChild(statsSatk);
+    statsContainer.appendChild(statsSdef);
+    statsContainer.appendChild(statsSpeed);
+    flipCardBack.appendChild(imgSprite);
+    flipCardBack.appendChild(statsContainer);
+
+    flipCardFront.appendChild(imgPokemon);
+    flipCardFront.appendChild(pokemonNumber);
+    flipCardFront.appendChild(displayName);
     typeContainer.appendChild(pokemonType);
     typeContainer.appendChild(pokemonType2);
-    pokemonContainer.appendChild(typeContainer);
+    flipCardFront.appendChild(typeContainer);
+    flipCardInner.appendChild(flipCardFront);
+    flipCardInner.appendChild(flipCardBack);
+    pokemonContainer.appendChild(flipCardInner);
     mainContainer.appendChild(pokemonContainer);
   }
 };
@@ -127,18 +165,26 @@ searchpokemon.addEventListener("input", (e) => {
 
 getTypes();
 
-function alphabeticSort() {
-  const sortedAZ = [...allPokemons].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
-
-  allPokemons(sortedAZ);
+function alphabeticSortAz() {
+  const sortedAZ = allPokemons.toSorted((a, b) => a.name.localeCompare(b.name));
+  console.log(allPokemons);
+  getPokemons(sortedAZ);
 }
 
-azSort.addEventListener("click", () => alphabeticSort());
+function alphabeticSortZa() {
+  const sortedZA = allPokemons.toSorted((a, b) => b.name.localeCompare(a.name));
+
+  getPokemons(sortedZA);
+}
+
+azSort.addEventListener("click", () => alphabeticSortAz());
+
+zaSort.addEventListener("click", () => alphabeticSortZa());
+
+resetSort.addEventListener("click", () => getPokemons(allPokemons));
 
 function ascDescendingSort() {
-  const descPokemons = allPokemons.reverse();
+  const descPokemons = allPokemons.toReversed();
   getPokemons(descPokemons);
 }
 
