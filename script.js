@@ -68,8 +68,8 @@ const getPokemons = (arr) => {
     statsHp.innerText = `HP: ${pokemon.stats.HP}`;
     statsAtk.innerText = `ATK: ${pokemon.stats.attack}`;
     statsDef.innerText = `DEF: ${pokemon.stats.defense}`;
-    statsSatk.innerText = `SPDEF: ${pokemon.stats.special_attack}`;
-    statsSdef.innerText = `SPATK: ${pokemon.stats.special_defense}`;
+    statsSatk.innerText = `SPATK: ${pokemon.stats.special_attack}`;
+    statsSdef.innerText = `SPDEF: ${pokemon.stats.special_defense}`;
     statsSpeed.innerText = `SPD: ${pokemon.stats.speed}`;
     imgSprite.src = `${pokemon.sprite}`;
 
